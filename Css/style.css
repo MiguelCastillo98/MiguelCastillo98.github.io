@@ -1002,18 +1002,28 @@ section.portfolio.projects .title::after {
 
     nav .container {
         width: 100%;
+        position: relative;
     }
 
+    /* Ocultamos la lista por defecto en pantallas pequeñas */
     nav .container ul {
         position: fixed;
         top: 0;
-        flex-direction: columns;
-        z-index: 3;
+        left: 0;
+        flex-direction: column; /* <-- CORREGIDO (decía columns) */
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
         width: 100vw;
         height: 100vh;
         background: var(--color-white);
         box-shadow: 1rem 0 2rem var(--color-primary-light);
-        display: none;
+        display: none; /* Se oculta */
+    }
+
+    /* Cuando el estado de React activa la clase .open */
+    nav .container ul.open {
+        display: flex;
     }
 
     nav ul li {
@@ -1023,12 +1033,14 @@ section.portfolio.projects .title::after {
 
     nav .container ul li a {
         width: 100%;
-        justify-content: start;
-        padding-left: 2rem;
+        justify-content: center;
+        padding-left: 0;
+        font-size: 1.3rem;
     }
 
     nav .container ul li a:hover {
-        padding-left: 3rem;
+        padding-left: 0;
+        color: var(--color-primary);
     }
 
     nav button {
@@ -1037,12 +1049,14 @@ section.portfolio.projects .title::after {
         background: transparent;
         color: var(--color-black);
         margin-right: 1rem;
+        font-size: 1.8rem;
     }
 
     nav button#close-btn {
-        z-index: 4;
-       display: none;
-
+        position: fixed;
+        top: 1.2rem;
+        right: 1rem;
+        z-index: 20; /* Aseguramos que esté sobre el menú */
     }
 
     /* ====================== LANDING SECTION ===================== */
